@@ -41,12 +41,8 @@ public class Menu {
             showBahnen();
         }
 
-        else if(choice.equals("5")){
-            
-        }
-
         else {
-            System.out.println("Bitte nur 1-9 eingeben!");
+            System.out.println("Bitte nur 1-4 eingeben!");
         }
         
         startMenu();
@@ -54,7 +50,101 @@ public class Menu {
 
 
     public void createFluegeMenu(){
-        
+        System.out.println("Bitte wählen Sie einen Preis aus");
+
+        //String preis = get_scanner().next();
+        //int preisfinal = Integer.valueOf(preis);
+
+        int i = 0;
+        System.out.println("Bitte wählen Sie ein Auto aus: ");
+
+        for (Terminal terminal : App.getAllTerminals()){
+            if(terminal != null){
+                System.out.println(i + " - " + terminal.get_name());
+                i++;
+            }
+        }
+
+        String terminal_choice = get_scanner().next();
+        int terminal_index = Integer.valueOf(terminal_choice);
+
+        System.out.println(App.getAllTerminals() [terminal_index]);
+
+        for (Airline airline : App.getAllAirlines()){
+            if(airline != null){
+                System.out.println(i + " - " + airline.get_name());
+                i++;
+            }
+        }
+
+        String airline_choice = get_scanner().next();
+        int airline_index = Integer.valueOf(airline_choice);
+
+        System.out.println(App.getAllAirlines() [airline_index]);
+
+
+        for (Fluglinie fluglinie : App.getAllFluglinien()){
+            if(fluglinie != null){
+                System.out.println(i + " - " + fluglinie.get_name());
+                i++;
+            }
+        }
+
+        String fluglinie_choice = get_scanner().next();
+        int fluglinie_index = Integer.valueOf(fluglinie_choice);
+
+        System.out.println(App.getAllFluglinien() [fluglinie_index]);
+
+        for (Pilot pilot : App.getAllPiloten()){
+            if(pilot != null){
+                System.out.println(i + " - " + pilot.get_vorname() + " - " + pilot.get_nachname());
+                i++;
+            }
+        }
+
+        String pilot_choice = get_scanner().next();
+        int pilot_index = Integer.valueOf(pilot_choice);
+
+        System.out.println(App.getAllPiloten() [pilot_index]);
+
+
+        for (Passagier passagier : App.getAllPassagiere()){
+            if(passagier != null){
+                System.out.println(i + " - " + passagier.get_vorname() + " - " + passagier.get_nachname());
+                i++;
+            }
+        }
+
+        String passagier_choice = get_scanner().next();
+        int passagier_index = Integer.valueOf(passagier_choice);
+
+        System.out.println(App.getAllPassagiere() [passagier_index]);
+
+        for (Bahn bahn : App.getAllBahnen()){
+            if(bahn != null){
+                System.out.println(i + " - " + bahn.get_name());
+                i++;
+            }
+        }
+
+        String bahn_choice = get_scanner().next();
+        int bahn_index = Integer.valueOf(bahn_choice);
+
+        System.out.println(App.getAllBahnen() [bahn_index]);
+
+        for(Startzeit startzeit : getAllStartzeiten()){
+            if(startzeit != null){
+                System.out.println(i + " - " + startzeit.get_name());
+            }
+        }
+
+        String startzeit_choice = get_scanner().next();
+        int startzeit_index = Integer.valueOf(startzeit_choice);
+
+        System.out.println(App.getAllStartzeiten() [startzeit_index]);
+
+
+        App.addFlug(new Flug(App.getAllTerminals()[terminal_index], App.getAllAirlines()[airline_index], App.getAllFluglinien()[fluglinie_index], App.getAllStartzeiten() [startzeit_index], App.getAllPiloten()[pilot_index], App.getAllPassagiere()[passagier_index], App.getAllBahnen()[bahn_index], int min, int max);
     }
 
     public void showTerminals(){
